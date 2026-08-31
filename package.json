@@ -1,10 +1,6 @@
 {
-  "name": "barbearia-premium-cloudflare",
+  "name": "barbearia-premium-worker",
   "private": true,
-  "scripts": {
-    "deploy": "wrangler pages deploy public --project-name barbearia-premium"
-  },
-  "devDependencies": {
-    "wrangler": "latest"
-  }
+  "scripts": { "deploy": "wrangler deploy" },
+  "devDependencies": { "wrangler": "latest" }
 }
