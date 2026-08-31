@@ -1,0 +1,10 @@
+{
+  "name": "barbearia-premium-cloudflare",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler pages deploy public --project-name barbearia-premium"
+  },
+  "devDependencies": {
+    "wrangler": "latest"
+  }
+}

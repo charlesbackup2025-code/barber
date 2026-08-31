@@ -1,0 +1,6 @@
+name = "barbearia-premium"
+compatibility_date = "2026-08-31"
+pages_build_output_dir = "./public"
+
+[vars]
+CALENDAR_ID = "654fc6253ab57566dda44669f464769f87cf976b8dd6a9d47affcb4045f515a2@group.calendar.google.com"
