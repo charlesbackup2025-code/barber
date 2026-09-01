@@ -90,7 +90,8 @@
       letter-spacing: .08em; text-transform: uppercase; transition: transform .2s, background .2s;
     }
     .button:hover { transform: translateY(-2px); background: var(--gold-soft); }
-    .button.whatsapp { background: var(--gold); color: #fff; }
+    .button.whatsapp { background: transparent; color: var(--gold); }
+    .button.whatsapp:hover { background: transparent; color: var(--gold-soft); }
     .hero-note { color: var(--muted); font-size: 12px; margin-top: 16px; }
     .hero-booking { margin-top: 14px; max-width: 680px; }
     .hero-booking h2 { margin: 12px 0 10px; font-size: clamp(24px, 3.5vw, 36px); line-height: 1.05; letter-spacing: -.04em; white-space: nowrap; }
@@ -115,9 +116,9 @@
     .card-bottom { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 8px; padding: 0 20px 14px; }
     .price { font-size: 20px; font-weight: 800; white-space: nowrap; }
     .price small { color: var(--muted); font-size: 12px; font-weight: 400; }
-    .mini-button { display: inline-flex; align-items: center; justify-content: center; color: #fff; background: var(--gold); padding: 10px 14px; border-radius: 3px; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+    .mini-button { display: inline-flex; align-items: center; justify-content: center; color: var(--gold); background: transparent; padding: 10px 14px; border-radius: 3px; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
     .card-bottom { flex-wrap: wrap; }
-    .mini-button:hover { background: var(--gold-soft); color: #fff; }
+    .mini-button:hover { background: transparent; color: var(--gold-soft); }
     .booking { background: #101010; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .booking-box { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; }
     .booking h2 { margin: 0 0 14px; font-size: clamp(28px, 5vw, 58px); line-height: .98; letter-spacing: -.05em; white-space: nowrap; }
@@ -196,7 +197,7 @@
     .available-time { padding: 11px 4px; background: #080808; border: 1px solid #3a3a3a; color: var(--white); font-weight: 700; cursor: pointer; }
     .available-time:hover, .available-time.is-selected { background: var(--gold); border-color: var(--gold); color: #111; }
     .available-time:disabled { opacity: .35; cursor: not-allowed; background: #1a1a1a; color: #777; }
-    .booking-confirm { width: 100%; }
+    .booking-confirm { width: 100%; margin-top: 20px; }
     .booking-confirm[aria-disabled="true"] { opacity: .45; pointer-events: none; }
     .photo-trigger { display: block; padding: 0; border: 0; width: 100%; background: transparent; cursor: pointer; }
     .photo-trigger .card-image { transition: transform .25s, filter .25s; }
