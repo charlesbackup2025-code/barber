@@ -72,7 +72,7 @@
     .hero { position: relative; z-index: 1; max-width: none; padding: 104px 0 58px; }
     .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 300px); gap: 44px; align-items: start; }
     .hero-gallery { position: relative; width: 100%; aspect-ratio: 4 / 5; overflow: hidden; border: 1px solid rgba(241,90,36,.55); background: #0b0b0b; box-shadow: 14px 14px 0 rgba(241,90,36,.10); }
-    .hero-gallery img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: heroFade 12s infinite; }
+    .hero-gallery img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; image-rendering: auto; opacity: 0; animation: heroFade 12s infinite; }
     .hero-gallery img:nth-child(1) { animation-delay: 0s; }
     .hero-gallery img:nth-child(2) { animation-delay: 3s; }
     .hero-gallery img:nth-child(3) { animation-delay: 6s; }
@@ -108,7 +108,7 @@
     .services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
     .card { background: var(--panel); border: 1px solid var(--line); padding: 0; min-height: 220px; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; transition: border-color .3s, transform .3s; }
     .card:hover { border-color: var(--gold); transform: translateY(-3px); }
-    .card-image { width: 100%; height: 190px; aspect-ratio: 16 / 9; display: block; object-fit: cover; filter: saturate(.82) contrast(1.08); }
+    .card-image { width: 100%; height: 190px; aspect-ratio: 16 / 9; display: block; object-fit: cover; object-position: center center; image-rendering: auto; filter: saturate(.92) contrast(1.04); }
     .card > div:not(.card-bottom) { padding: 14px 20px 0; }
     .number { color: var(--gold); font-size: 12px; letter-spacing: .12em; }
     .card h3 { margin: 8px 0 3px; color: #fff; font-size: 20px; }
@@ -253,7 +253,7 @@
               <div class="step"><b>3</b><span>Clique em “Agendar” e envie a mensagem.</span></div>
               <div class="step"><b>4</b><span>Aguarde a confirmação do barbeiro.</span></div>
             </div>
-            <button class="mini-button booking-trigger" type="button" data-service="">Agendar ↗</button>
+            <button class="mini-button booking-trigger" type="button" data-service="" aria-controls="agendamento" aria-expanded="false">Agendar ↗</button>
             <div class="inline-booking" id="agendamento" hidden>
               <button class="close-booking" type="button" aria-label="Fechar calendário">×</button>
               <div class="eyebrow">Reserva rápida</div>
@@ -272,17 +272,17 @@
                   </div>
                 </div>
                 <label>Horário disponível</label>
-                <div class="available-times" id="available-times"></div>
+                <div class="available-times" id="available-times" aria-live="polite"></div>
               </div>
               <a class="button whatsapp booking-confirm" id="booking-confirm" href="#" aria-disabled="true">Agendar ↗</a>
             </div>
           </div>
         </div>
         <div class="hero-gallery" aria-label="Galeria de cortes da Barbearia Premium">
-          <img src="/images/image-1.jpg" alt="Corte masculino com acabamento em degradê">
-          <img src="/images/image-2.jpg" alt="Corte masculino clássico feito na barbearia">
-          <img src="/images/image-3.jpg" alt="Detalhe de acabamento de corte masculino">
-          <img src="/images/image-4.jpg" alt="Corte masculino com acabamento lateral">
+          <img loading="eager" fetchpriority="high" decoding="async" src="/images/image-1.jpg" alt="Corte masculino com acabamento em degradê">
+          <img loading="eager" fetchpriority="high" decoding="async" src="/images/image-2.jpg" alt="Corte masculino clássico feito na barbearia">
+          <img loading="eager" fetchpriority="high" decoding="async" src="/images/image-3.jpg" alt="Detalhe de acabamento de corte masculino">
+          <img loading="eager" fetchpriority="high" decoding="async" src="/images/image-4.jpg" alt="Corte masculino com acabamento lateral">
         </div>
       </div>
     </div>
@@ -296,32 +296,32 @@
         </div>
         <div class="services">
           <article class="card">
-            <button class="photo-trigger booking-trigger" type="button" data-service="Social"><img class="card-image" src="/images/image-4.jpg" alt="Barbeiro finalizando um corte masculino"></button>
+            <button class="photo-trigger booking-trigger" type="button" data-service="Social"><img loading="lazy" decoding="async" class="card-image" src="/images/image-4.jpg" alt="Barbeiro finalizando um corte masculino"></button>
             <div><h3>Social</h3><p>Acabamento limpo e atemporal para qualquer ocasião.</p></div>
             <div class="card-bottom"><div class="price">R$ 40</div><a class="mini-button booking-trigger" href="#agendamento" data-service="Social">Agendar ↗</a></div>
           </article>
           <article class="card">
-            <button class="photo-trigger booking-trigger" type="button" data-service="Personalizado"><img class="card-image" src="/images/image-2.jpg" alt="Detalhe de corte masculino com tesoura e pente"></button>
+            <button class="photo-trigger booking-trigger" type="button" data-service="Personalizado"><img loading="lazy" decoding="async" class="card-image" src="/images/image-2.jpg" alt="Detalhe de corte masculino com tesoura e pente"></button>
             <div><h3>Personalizado</h3><p>Um corte pensado para seu rosto, rotina e estilo.</p></div>
             <div class="card-bottom"><div class="price">R$ 40</div><a class="mini-button booking-trigger" href="#agendamento" data-service="Personalizado">Agendar ↗</a></div>
           </article>
           <article class="card">
-            <button class="photo-trigger booking-trigger" type="button" data-service="Barba"><img class="card-image" src="/images/image-5.jpg" alt="Corte masculino em destaque no Instagram da barbearia"></button>
+            <button class="photo-trigger booking-trigger" type="button" data-service="Barba"><img loading="lazy" decoding="async" class="card-image" src="/images/image-5.jpg" alt="Corte masculino em destaque no Instagram da barbearia"></button>
             <div><h3>Barba</h3><p>Modelagem, contorno e acabamento para valorizar seu rosto.</p></div>
             <div class="card-bottom"><div class="price">R$ 40</div><a class="mini-button booking-trigger" href="#agendamento" data-service="Barba">Agendar ↗</a></div>
           </article>
           <article class="card">
-            <button class="photo-trigger booking-trigger" type="button" data-service="Luzes"><img class="card-image" src="/images/image-1.jpg" alt="Barbeiro trabalhando em um corte masculino moderno"></button>
+            <button class="photo-trigger booking-trigger" type="button" data-service="Luzes"><img loading="lazy" decoding="async" class="card-image" src="/images/image-1.jpg" alt="Barbeiro trabalhando em um corte masculino moderno"></button>
             <div><h3>Luzes</h3><p>Iluminação sutil ou marcante para renovar o visual.</p></div>
             <div class="card-bottom"><div class="price">R$ 40</div><a class="mini-button booking-trigger" href="#agendamento" data-service="Luzes">Agendar ↗</a></div>
           </article>
           <article class="card">
-            <button class="photo-trigger booking-trigger" type="button" data-service="Degradê"><img class="card-image" src="/images/image-3.jpg" alt="Barbeiro concentrado em um corte masculino"></button>
+            <button class="photo-trigger booking-trigger" type="button" data-service="Degradê"><img loading="lazy" decoding="async" class="card-image" src="/images/image-3.jpg" alt="Barbeiro concentrado em um corte masculino"></button>
             <div><h3>Degradê</h3><p>Transição suave, laterais bem marcadas e acabamento atual.</p></div>
             <div class="card-bottom"><div class="price">R$ 40</div><a class="mini-button booking-trigger" href="#agendamento" data-service="Degradê">Agendar ↗</a></div>
           </article>
           <article class="card">
-            <button class="photo-trigger booking-trigger" type="button" data-service="Navalhado"><img class="card-image" src="/images/image-6.jpg" alt="Corte masculino com acabamento lateral no Instagram da barbearia"></button>
+            <button class="photo-trigger booking-trigger" type="button" data-service="Navalhado"><img loading="lazy" decoding="async" class="card-image" src="/images/image-6.jpg" alt="Corte masculino com acabamento lateral no Instagram da barbearia"></button>
             <div><h3>Navalhado</h3><p>Risco e definição para quem gosta de presença e atitude.</p></div>
             <div class="card-bottom"><div class="price">R$ 40</div><a class="mini-button booking-trigger" href="#agendamento" data-service="Navalhado">Agendar ↗</a></div>
           </article>
@@ -393,8 +393,9 @@
     try{const r=await fetch('/api/availability?date='+encodeURIComponent(date.value),{cache:'no-store'});const data=await r.json();if(!r.ok)throw new Error();availability=data.slots||[];renderTimes();}
     catch(e){renderTimes();}
   }
-  function open(name){if(name)service.value=name;panel.hidden=false;panel.scrollIntoView({behavior:'smooth',block:'nearest'});if(date.value)loadAvailability();service.focus()}
-  function close(){panel.hidden=true;calendar.hidden=true;dateTrigger.setAttribute('aria-expanded','false')}
+  const triggers=Array.from(document.querySelectorAll('.booking-trigger'));
+  function open(name){if(name)service.value=name;panel.hidden=false;triggers.forEach(t=>t.setAttribute('aria-expanded','true'));panel.scrollIntoView({behavior:'smooth',block:'nearest'});if(date.value)loadAvailability();service.focus()}
+  function close(){panel.hidden=true;calendar.hidden=true;dateTrigger.setAttribute('aria-expanded','false');triggers.forEach(t=>t.setAttribute('aria-expanded','false'))}
   dateTrigger.addEventListener('click',function(){if(date.value){const [y,m]=date.value.split('-').map(Number);viewDate=new Date(y,m-1,1)}renderCalendar();calendar.hidden=!calendar.hidden;dateTrigger.setAttribute('aria-expanded',String(!calendar.hidden))});
   calendarPrev.addEventListener('click',function(){if(!calendarPrev.disabled){viewDate=new Date(viewDate.getFullYear(),viewDate.getMonth()-1,1);renderCalendar()}});
   calendarNext.addEventListener('click',function(){viewDate=new Date(viewDate.getFullYear(),viewDate.getMonth()+1,1);renderCalendar()});
