@@ -137,12 +137,17 @@
     @media (max-width: 760px) {
       .wrap { width: min(100% - 28px, 600px); }
       header { min-height: auto; }
-      .hero { padding: 88px 0 48px; }
+      .hero { padding: 72px 0 32px; }
       .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(130px, 155px); gap: 14px; align-items: start; }
       .hero-gallery { order: 2; width: 100%; max-width: 155px; margin: 0 0 0 auto; }
       .hero-copy { order: 1; }
       .hero-booking h2 { font-size: clamp(20px, 5.5vw, 26px); white-space: normal; }
-      .hero p { font-size: 15px; }
+      .hero p { font-size: 12px; line-height: 1.25; margin-bottom: 6px; }
+      .hero-booking .steps { margin-top: 5px; padding-left: 10px; }
+      .hero-booking .step { gap: 6px; padding: 3px 0; }
+      .hero-booking .step b { min-width: 20px; font-size: 10px; }
+      .hero-booking .step span { font-size: 10px; line-height: 1.2; }
+      .hero-booking > .button { min-height: 36px; padding: 0 10px; font-size: 10px; margin-top: 7px; }
       .services { grid-template-columns: repeat(2, 1fr); }
       .booking-box { grid-template-columns: 1fr; }
       .location-map { height: 300px; margin-top: 22px; }
