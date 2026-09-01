@@ -72,12 +72,12 @@
     .hero { position: relative; z-index: 1; max-width: none; padding: 104px 0 58px; }
     .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 300px); gap: 52px; align-items: start; }
     .hero-gallery { position: relative; width: 100%; aspect-ratio: 4 / 5; overflow: hidden; border: 1px solid rgba(241,90,36,.55); background: #0b0b0b; box-shadow: 14px 14px 0 rgba(241,90,36,.10); }
-    .hero-gallery img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; image-rendering: auto; opacity: 0; animation: heroFade 12s infinite; }
+    .hero-gallery img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: heroFade 12s infinite; }
     .hero-gallery img:nth-child(1) { animation-delay: 0s; }
     .hero-gallery img:nth-child(2) { animation-delay: 3s; }
     .hero-gallery img:nth-child(3) { animation-delay: 6s; }
     .hero-gallery img:nth-child(4) { animation-delay: 9s; }
-
+    .gallery-credit { position: absolute; left: 14px; bottom: 12px; z-index: 2; color: #fff; background: rgba(0,0,0,.72); padding: 6px 9px; font-size: 10px; letter-spacing: .08em; }
     @keyframes heroFade { 0%, 20% { opacity: 1; } 25%, 100% { opacity: 0; } }
     .eyebrow { color: var(--gold-soft); font-size: 12px; letter-spacing: .25em; text-transform: uppercase; font-weight: 700; }
     h1 { font-size: clamp(48px, 9vw, 104px); line-height: .92; letter-spacing: -.06em; margin: 20px 0 26px; max-width: 760px; }
@@ -101,14 +101,13 @@
     .hero-booking .step span { color: #d2d2d2; font-size: 15px; }
     .hero-booking > .mini-button { display: inline-block; margin-top: 20px; border: 0; background: transparent; padding: 0; cursor: pointer; }
     section { padding: 92px 0; }
-    #cortes { padding-top: 56px; }
     .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 34px; }
     .section-head h2 { margin: 0; font-size: clamp(30px, 5vw, 54px); line-height: 1; letter-spacing: -.04em; white-space: nowrap; }
     .section-head p { margin: 0; color: var(--muted); max-width: 360px; font-size: 14px; }
     .services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
     .card { background: var(--panel); border: 1px solid var(--line); padding: 0; min-height: 220px; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; transition: border-color .2s, transform .2s; }
     .card:hover { border-color: var(--gold); transform: translateY(-3px); }
-    .card-image { width: 100%; height: 190px; aspect-ratio: 16 / 9; display: block; object-fit: cover; object-position: center center; image-rendering: auto; filter: saturate(.95) contrast(1.04); }
+    .card-image { width: 100%; height: 190px; aspect-ratio: 16 / 9; display: block; object-fit: cover; filter: saturate(.82) contrast(1.08); }
     .card > div:not(.card-bottom) { padding: 14px 20px 0; }
     .number { color: var(--gold); font-size: 12px; letter-spacing: .12em; }
     .card h3 { margin: 8px 0 3px; font-size: 20px; }
@@ -132,7 +131,7 @@
     .location h2 { margin: 14px 0 18px; font-size: clamp(36px, 5vw, 62px); line-height: .95; letter-spacing: -.05em; }
     .location h2 em { color: var(--gold-soft); font-style: normal; }
     .location p { color: var(--muted); margin: 0 0 26px; line-height: 1.8; }
-    .location-map { width: 100%; max-width: 720px; height: 360px; display: block; margin: 0 auto 26px; border: 1px solid var(--line); background: #080808; }
+    .location-map { width: 100%; max-width: 720px; height: 360px; display: block; margin: 32px auto 0; border: 1px solid var(--line); background: #080808; }
     footer { padding: 34px 0 72px; color: var(--muted); font-size: 12px; }
     .footer-inner { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding-top: 22px; }
     @media (max-width: 760px) {
@@ -151,7 +150,7 @@
       .hero-booking > .mini-button { margin-top: 7px; font-size: 10px; }
       .services { grid-template-columns: repeat(2, 1fr); }
       .booking-box { grid-template-columns: 1fr; }
-      .location-map { height: 300px; margin: 0 auto 20px; }
+      .location-map { height: 300px; margin-top: 22px; }
       .hero-booking .steps { grid-template-columns: 1fr; }
       .card-image { height: 140px; aspect-ratio: 16 / 9; }
       .card > div:not(.card-bottom) { padding: 10px 12px 0; }
@@ -162,14 +161,11 @@
       .section-head { display: block; }
       .section-head p { margin-top: 16px; }
       section { padding: 68px 0; }
-      #cortes { padding-top: 44px; }
       .card { min-height: 205px; }
       .footer-inner { display: block; }
       .footer-inner div + div { margin-top: 10px; }
     }
 
-    .booking-slot { padding: 0 0 32px; }
-    .booking-slot .inline-booking { margin: 0 auto; }
     .inline-booking { margin-top: 20px; width: min(680px, 100%); background: #151515; border: 1px solid var(--gold); padding: 24px; }
     .inline-booking[hidden] { display: none; }
     .inline-booking h2 { margin: 10px 0 8px; font-size: clamp(30px, 5vw, 48px); letter-spacing: -.05em; }
@@ -227,7 +223,28 @@
               <div class="step"><b>04</b><span>Aguarde a confirmação da barbearia.</span></div>
             </div>
             <button class="mini-button booking-trigger" type="button" data-service="">Agendar agora ↗</button>
-
+            <div class="inline-booking" id="agendamento" hidden>
+              <button class="close-booking" type="button" aria-label="Fechar calendário">×</button>
+              <div class="eyebrow">Reserva rápida</div>
+              <p class="inline-subtitle">Escolha o serviço, o dia e um horário disponível.</p>
+              <div class="booking-fields">
+                <label for="booking-service">Tipo de corte</label>
+                <select id="booking-service"><option>Social</option><option>Personalizado</option><option>Barba</option><option>Luzes</option><option>Degradê</option><option>Navalhado</option></select>
+                <label for="date-trigger">Data</label>
+                <div class="date-control">
+                  <button id="date-trigger" class="date-trigger" type="button" aria-haspopup="dialog" aria-expanded="false">Escolha uma data</button>
+                  <input id="booking-date" type="date" hidden>
+                  <div class="calendar-picker" id="booking-calendar" role="dialog" aria-label="Escolha uma data" hidden>
+                    <div class="calendar-head"><button id="calendar-prev" class="calendar-nav" type="button" aria-label="Mês anterior">‹</button><strong id="calendar-label"></strong><button id="calendar-next" class="calendar-nav" type="button" aria-label="Próximo mês">›</button></div>
+                    <div class="calendar-weekdays" aria-hidden="true"><span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span></div>
+                    <div class="calendar-days" id="calendar-days"></div>
+                  </div>
+                </div>
+                <label>Horário disponível</label>
+                <div class="available-times" id="available-times"></div>
+              </div>
+              <a class="button whatsapp booking-confirm" id="booking-confirm" href="#" aria-disabled="true">Agendar agora ↗</a>
+            </div>
           </div>
         </div>
         <div class="hero-gallery" aria-label="Galeria de cortes da Barbearia Premium">
@@ -235,31 +252,8 @@
           <img src="/images/image-2.jpg" alt="Corte masculino clássico feito na barbearia">
           <img src="/images/image-3.jpg" alt="Detalhe de acabamento de corte masculino">
           <img src="/images/image-4.jpg" alt="Corte masculino com acabamento lateral">
+          <a class="gallery-credit" href="https://www.instagram.com/supremabarbersshop/" target="_blank" rel="noopener">FOTOS: @SUPREMABARBERSSHOP ↗</a>
         </div>
-      </div>
-    </div>
-    <div class="wrap booking-slot">
-      <div class="inline-booking" id="agendamento" hidden>
-        <button class="close-booking" type="button" aria-label="Fechar calendário">×</button>
-        <div class="eyebrow">Reserva rápida</div>
-        <p class="inline-subtitle">Escolha o serviço, o dia e um horário disponível.</p>
-        <div class="booking-fields">
-          <label for="booking-service">Tipo de corte</label>
-          <select id="booking-service"><option>Social</option><option>Personalizado</option><option>Barba</option><option>Luzes</option><option>Degradê</option><option>Navalhado</option></select>
-          <label for="date-trigger">Data</label>
-          <div class="date-control">
-            <button id="date-trigger" class="date-trigger" type="button" aria-haspopup="dialog" aria-expanded="false">Escolha uma data</button>
-            <input id="booking-date" type="date" hidden>
-            <div class="calendar-picker" id="booking-calendar" role="dialog" aria-label="Escolha uma data" hidden>
-              <div class="calendar-head"><button id="calendar-prev" class="calendar-nav" type="button" aria-label="Mês anterior">‹</button><strong id="calendar-label"></strong><button id="calendar-next" class="calendar-nav" type="button" aria-label="Próximo mês">›</button></div>
-              <div class="calendar-weekdays" aria-hidden="true"><span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span></div>
-              <div class="calendar-days" id="calendar-days"></div>
-            </div>
-          </div>
-          <label>Horário disponível</label>
-          <div class="available-times" id="available-times"></div>
-        </div>
-        <a class="button whatsapp booking-confirm" id="booking-confirm" href="#" aria-disabled="true">Agendar agora ↗</a>
       </div>
     </div>
   </header>
@@ -307,11 +301,11 @@
 
     <section class="location" id="localizacao">
       <div class="wrap location-grid">
-        <iframe class="location-map" title="Localização da Barbearia Premium no Google Maps" loading="lazy" allowfullscreen src="https://www.google.com/maps?q=Estrada+do+Jacarand%C3%A1%2C+2090%2C+Altos+da+Santa+Lucia%2C+Carapicu%C3%ADba%2C+SP%2C+06361-400&output=embed"></iframe>
         <div>
           <div class="eyebrow">Onde estamos</div>
           <p>Estrada do Jacarandá, 2090<br>Altos da Santa Lúcia<br>Carapicuíba — SP, 06361-400</p>
         </div>
+        <iframe class="location-map" title="Localização da Barbearia Premium no Google Maps" loading="lazy" allowfullscreen src="https://www.google.com/maps?q=Estrada+do+Jacarand%C3%A1%2C+2090%2C+Altos+da+Santa+Lucia%2C+Carapicu%C3%ADba%2C+SP%2C+06361-400&output=embed"></iframe>
       </div>
     </section>
   </main>
