@@ -11,7 +11,8 @@ export default {
       try {
         const busy = await busySlots(env, date);
         return Response.json({ date, slots: slots().map(time => ({ time, available: !busy.has(time) })) }, { headers: { 'cache-control': 'no-store' } });
-      } catch {
+      } catch (error) {
+        console.error('availability_error', error instanceof Error ? error.message : String(error));
         return Response.json({ error: 'Não foi possível consultar a agenda.' }, { status: 500 });
       }
     }
