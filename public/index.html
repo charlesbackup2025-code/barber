@@ -138,8 +138,9 @@
       .wrap { width: min(100% - 28px, 600px); }
       header { min-height: auto; }
       .hero { padding: 88px 0 48px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
-      .hero-gallery { max-width: 450px; margin: 0 auto; }
+      .hero-grid { display: flex; flex-direction: column; gap: 32px; }
+      .hero-gallery { order: -1; max-width: 450px; margin: 0 auto; }
+      .hero-copy { order: 1; }
       .services { grid-template-columns: repeat(2, 1fr); }
       .booking-box { grid-template-columns: 1fr; }
       .location-image { margin-top: 22px; }
