@@ -192,7 +192,7 @@
     .photo-trigger { display: block; padding: 0; border: 0; width: 100%; background: transparent; cursor: pointer; }
     .photo-trigger .card-image { transition: transform .25s, filter .25s; }
     .photo-trigger:hover .card-image { transform: scale(1.03); filter: saturate(1) contrast(1.08); }
-    @media (max-width:760px) { .inline-booking { padding: 20px 16px; } .available-times { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width:760px) { .inline-booking { width: calc(100vw - 28px); max-width: 680px; padding: 24px 16px; } .available-times { grid-template-columns: repeat(3, 1fr); } }
   </style>
 </head>
 <body>
@@ -374,7 +374,7 @@
     try{
       const r=await fetch('/api/book',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({service:service.value,date:date.value,time:selectedTime})});
       const data=await r.json(); if(!r.ok)throw new Error(data.error||'Não foi possível confirmar');
-      const [y,m,d]=date.value.split('-'); const message='Olá, quero agendar na Barbearia Premium. Tipo de corte: '+service.value+'. Valor: R$ 40. Data agendada: '+d+'/'+m+'/'+y+'. Horário agendado: '+selectedTime+'.';
+      const [y,m,d]=date.value.split('-'); const message='Olá, quero agendar na Barbearia Premium.\nTipo de corte: '+service.value+'.\nValor: R$ 40.\nData agendada: '+d+'/'+m+'/'+y+'.\nHorário agendado: '+selectedTime+'.';
       window.location.href='https://wa.me/5511949753727?text='+encodeURIComponent(message);
     }catch(err){confirm.textContent='Agendar agora ↗';updateSummary()}
   });
