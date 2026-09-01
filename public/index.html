@@ -138,8 +138,8 @@
       .wrap { width: min(100% - 28px, 600px); }
       header { min-height: auto; }
       .hero { padding: 88px 0 48px; }
-      .hero-grid { display: flex; flex-direction: column; gap: 32px; }
-      .hero-gallery { order: -1; width: 50%; max-width: 225px; margin: 0 auto; }
+      .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(96px, 125px); gap: 16px; align-items: start; }
+      .hero-gallery { order: 2; width: 100%; max-width: 125px; margin: 0 0 0 auto; }
       .hero-copy { order: 1; }
       .services { grid-template-columns: repeat(2, 1fr); }
       .booking-box { grid-template-columns: 1fr; }
