@@ -106,20 +106,23 @@ export async function busySlots(env, date) {
   return busy;
 }
 
-export async function createBooking(env, { date, time, service }) {
+export async function createBooking(env, { date, time, service, name = '' }) {
   const busy = await busySlots(env, date);
   if (busy.has(time)) return { conflict: true };
   const hour = Number(time.slice(0, 2));
   const end = String(hour + 1).padStart(2, '0') + ':00';
+  const isTattoo = service.startsWith('Tattoo — ');
   const event = await calendarRequest(env, '/events', {
     method: 'POST',
     body: JSON.stringify({
-      summary: `${service} — Barbearia Premium`,
-      description: `Agendamento pelo site. Serviço: ${service}. Valor: R$ 40.`,
+      summary: isTattoo ? `Orçamento de tatuagem — ${name}` : `${service} — Barbearia Premium`,
+      description: isTattoo
+        ? `Solicitação pelo site. Nome: ${name}. Estilo: ${service.replace('Tattoo — ', '')}. Sinal: 20% do orçamento.`
+        : `Agendamento pelo site. Serviço: ${service}. Valor: R$ 40.`,
       start: { dateTime: `${date}T${time}:00-03:00`, timeZone: 'America/Sao_Paulo' },
       end: { dateTime: `${date}T${end}:00-03:00`, timeZone: 'America/Sao_Paulo' },
       transparency: 'opaque',
-      colorId: '6'
+      colorId: isTattoo ? '3' : '6'
     })
   });
   return { conflict: false, eventId: event.id };
