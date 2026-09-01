@@ -185,11 +185,8 @@
     .available-time { padding: 11px 4px; background: #080808; border: 1px solid #3a3a3a; color: var(--white); font-weight: 700; cursor: pointer; }
     .available-time:hover, .available-time.is-selected { background: var(--gold); border-color: var(--gold); color: #111; }
     .available-time:disabled { opacity: .35; cursor: not-allowed; background: #1a1a1a; color: #777; }
-    .booking-summary { margin: 20px 0 14px; border-top: 1px solid var(--line); padding-top: 15px; color: var(--muted); font-size: 14px; }
-    .booking-summary strong { color: var(--white); }
     .booking-confirm { width: 100%; }
     .booking-confirm[aria-disabled="true"] { opacity: .45; pointer-events: none; }
-    .booking-note { color: var(--muted); font-size: 12px; margin-top: 12px; }
     .photo-trigger { display: block; padding: 0; border: 0; width: 100%; background: transparent; cursor: pointer; }
     .photo-trigger .card-image { transition: transform .25s, filter .25s; }
     .photo-trigger:hover .card-image { transform: scale(1.03); filter: saturate(1) contrast(1.08); }
@@ -238,8 +235,6 @@
                 <label>Horário disponível</label>
                 <div class="available-times" id="available-times"></div>
               </div>
-              <div class="booking-summary" id="booking-summary">Selecione a data e o horário.</div>
-              <div class="booking-note">Valor: R$ 40 • duração: 1 hora • horários das 8h às 20h</div>
               <a class="button whatsapp booking-confirm" id="booking-confirm" href="#" aria-disabled="true">Agendar agora ↗</a>
             </div>
           </div>
@@ -320,7 +315,6 @@
   const calendarPrev=document.getElementById('calendar-prev');
   const calendarNext=document.getElementById('calendar-next');
   const times=document.getElementById('available-times');
-  const summary=document.getElementById('booking-summary');
   const confirm=document.getElementById('booking-confirm');
   let selectedTime=''; let availability=[];
   const today=new Date(); today.setHours(0,0,0,0);
@@ -346,10 +340,7 @@
     calendarPrev.disabled=(y===today.getFullYear()&&m===today.getMonth())||(viewDate<new Date(today.getFullYear(),today.getMonth(),1));
   }
   function updateSummary(){
-    if(date.value&&selectedTime){
-      summary.innerHTML='Serviço: <strong>'+service.value+'</strong> • Data: <strong>'+formatDate(date.value)+'</strong> • Horário: <strong>'+selectedTime+'</strong> • Valor: <strong>R$ 40</strong>';
-      confirm.setAttribute('aria-disabled','false');
-    }else{summary.textContent='Selecione a data e o horário.';confirm.setAttribute('aria-disabled','true')}
+    confirm.setAttribute('aria-disabled',String(!(date.value&&selectedTime)));
   }
   function renderTimes(){
     times.innerHTML=''; selectedTime='';
@@ -362,9 +353,8 @@
   }
   async function loadAvailability(){
     availability=[]; renderTimes(); if(!date.value)return;
-    summary.textContent='Consultando horários...';
     try{const r=await fetch('/api/availability?date='+encodeURIComponent(date.value),{cache:'no-store'});const data=await r.json();if(!r.ok)throw new Error();availability=data.slots||[];renderTimes();}
-    catch(e){summary.textContent='Não foi possível carregar os horários. Tente novamente.';}
+    catch(e){renderTimes();}
   }
   function open(name){if(name)service.value=name;panel.hidden=false;panel.scrollIntoView({behavior:'smooth',block:'nearest'});if(date.value)loadAvailability();service.focus()}
   function close(){panel.hidden=true;calendar.hidden=true;dateTrigger.setAttribute('aria-expanded','false')}
@@ -382,7 +372,7 @@
       const data=await r.json(); if(!r.ok)throw new Error(data.error||'Não foi possível confirmar');
       const [y,m,d]=date.value.split('-'); const message='Olá, quero agendar na Barbearia Premium. Tipo de corte: '+service.value+'. Valor: R$ 40. Data agendada: '+d+'/'+m+'/'+y+'. Horário agendado: '+selectedTime+'.';
       window.location.href='https://wa.me/5511949753727?text='+encodeURIComponent(message);
-    }catch(err){summary.textContent=err.message||'Não foi possível confirmar o horário.';confirm.textContent='Agendar agora ↗';updateSummary()}
+    }catch(err){confirm.textContent='Agendar agora ↗';updateSummary()}
   });
   renderCalendar(); renderTimes();
 })();
