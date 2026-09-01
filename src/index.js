@@ -1,6 +1,7 @@
 import { busySlots, createBooking, validDate, validSlot, slots } from './google.js';
 
 const SERVICES = new Set(['Social', 'Personalizado', 'Barba', 'Luzes', 'Degradê', 'Navalhado']);
+const TATTOO_SERVICES = new Set(['Realismo', 'Blackwork', 'Fine Line', 'Coberturas', 'Arte de terror', 'Projeto autoral']);
 
 export default {
   async fetch(request, env) {
@@ -11,8 +12,7 @@ export default {
       try {
         const busy = await busySlots(env, date);
         return Response.json({ date, slots: slots().map(time => ({ time, available: !busy.has(time) })) }, { headers: { 'cache-control': 'no-store' } });
-      } catch (error) {
-        console.error('availability_error', error instanceof Error ? error.message : String(error));
+      } catch {
         return Response.json({ error: 'Não foi possível consultar a agenda.' }, { status: 500 });
       }
     }
@@ -25,6 +25,21 @@ export default {
       }
       try {
         const result = await createBooking(env, { date, time, service });
+        if (result.conflict) return Response.json({ error: 'Esse horário acabou de ser reservado. Escolha outro.' }, { status: 409 });
+        return Response.json({ ok: true, eventId: result.eventId });
+      } catch {
+        return Response.json({ error: 'Não foi possível confirmar o horário agora.' }, { status: 500 });
+      }
+    }
+    if (url.pathname === '/api/tattoo-book' && request.method === 'POST') {
+      let body;
+      try { body = await request.json(); } catch { return Response.json({ error: 'Dados inválidos.' }, { status: 400 }); }
+      const { date, time, service, name } = body || {};
+      if (!validDate(date) || !validSlot(time) || !TATTOO_SERVICES.has(service) || typeof name !== 'string' || name.trim().length < 2) {
+        return Response.json({ error: 'Informe seu nome e escolha um estilo, uma data e um horário válidos.' }, { status: 400 });
+      }
+      try {
+        const result = await createBooking(env, { date, time, service: `Tattoo — ${service}`, name: name.trim() });
         if (result.conflict) return Response.json({ error: 'Esse horário acabou de ser reservado. Escolha outro.' }, { status: 409 });
         return Response.json({ ok: true, eventId: result.eventId });
       } catch {
