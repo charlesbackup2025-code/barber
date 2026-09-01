@@ -175,7 +175,8 @@
       .hero-copy > .eyebrow { font-size: 14px; }
       .inline-booking { width: 100%; max-width: none; padding: 36px; }
       .booking-fields select, .booking-fields input, .date-trigger { height: 54px; }
-      .brand { font-size: 36px; letter-spacing: .06em; }
+      nav { padding-top: 28px; }
+      .brand { font-size: 28px; letter-spacing: .07em; }
       .nav-link { min-height: 56px; font-size: 28px; }
       .hero { padding-top: 100px; }
       .hero-copy > .eyebrow { font-size: 20px; color: #fff; }
@@ -198,6 +199,7 @@
       .available-time { padding: 20px 8px; font-size: 24px; }
     }
     .inline-booking h2 { margin: 10px 0 8px; font-size: clamp(30px, 5vw, 48px); letter-spacing: -.05em; }
+    .inline-booking > .eyebrow { margin-bottom: 24px; }
     .inline-booking .close-booking { float: right; border: 0; background: transparent; color: var(--white); font-size: 30px; cursor: pointer; line-height: 1; }
     .inline-subtitle { color: var(--muted); margin: 0 0 20px; }
     .booking-fields { display: grid; gap: 8px; }
@@ -229,7 +231,7 @@
     .photo-trigger { display: block; padding: 0; border: 0; width: 100%; background: transparent; cursor: pointer; }
     .photo-trigger .card-image { transition: transform .3s, filter .3s; }
     .photo-trigger:hover .card-image { transform: scale(1.03); filter: saturate(1) contrast(1.08); }
-    @media (max-width:760px) { .inline-booking { width: calc(100vw - 28px); max-width: 680px; padding: 24px 16px; } .available-times { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width:760px) { .inline-booking { width: calc(100vw - 28px); max-width: 680px; padding: 24px 16px; } .inline-booking > .eyebrow { margin-bottom: 16px; } .available-times { grid-template-columns: repeat(3, 1fr); } }
   </style>
 </head>
 <body>
