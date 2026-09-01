@@ -133,7 +133,7 @@
     .location h2 { margin: 14px 0 18px; font-size: clamp(36px, 5vw, 62px); line-height: .95; letter-spacing: -.05em; }
     .location h2 em { color: var(--gold-soft); font-style: normal; }
     .location p { color: var(--muted); margin: 0 0 26px; line-height: 1.8; }
-    .location-map { width: 100%; max-width: 720px; height: 360px; display: block; margin: 32px auto 0; border: 1px solid var(--line); background: #080808; }
+    .location-map { width: 100%; max-width: 720px; height: 360px; display: block; margin: 18px auto 20px; border: 1px solid var(--line); background: #080808; }
     footer { padding: 34px 0 72px; color: var(--muted); font-size: 12px; }
     .footer-inner { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding-top: 22px; }
     @media (max-width: 760px) {
@@ -152,7 +152,7 @@
       .hero-booking > .mini-button { margin-top: 14px; font-size: 10px; }
       .services { grid-template-columns: repeat(2, 1fr); }
       .booking-box { grid-template-columns: 1fr; }
-      .location-map { height: 300px; margin-top: 22px; }
+      .location-map { height: 300px; margin: 14px auto 14px; }
       .hero-booking .steps { grid-template-columns: 1fr; }
       .card-image { height: 140px; aspect-ratio: 16 / 9; }
       .card > div:not(.card-bottom) { padding: 10px 12px 0; }
@@ -246,7 +246,7 @@
                 <label>Horário disponível</label>
                 <div class="available-times" id="available-times"></div>
               </div>
-              <a class="button whatsapp booking-confirm" id="booking-confirm" href="#" aria-disabled="true">Agendar agora ↗</a>
+              <a class="button whatsapp booking-confirm" id="booking-confirm" href="#" aria-disabled="true">Agendar ↗</a>
             </div>
           </div>
         </div>
@@ -303,11 +303,9 @@
 
     <section class="location" id="localizacao">
       <div class="wrap location-grid">
-        <div>
-          <div class="eyebrow">Onde estamos</div>
-          <p>Estrada do Jacarandá, 2090<br>Altos da Santa Lúcia<br>Carapicuíba — SP, 06361-400</p>
-        </div>
+        <div class="eyebrow">Onde estamos</div>
         <iframe class="location-map" title="Localização da Barbearia Premium no Google Maps" loading="lazy" allowfullscreen src="https://www.google.com/maps?q=Estrada+do+Jacarand%C3%A1%2C+2090%2C+Altos+da+Santa+Lucia%2C+Carapicu%C3%ADba%2C+SP%2C+06361-400&output=embed"></iframe>
+        <p>Estrada do Jacarandá, 2090<br>Altos da Santa Lúcia<br>Carapicuíba — SP, 06361-400</p>
       </div>
     </section>
   </main>
@@ -383,7 +381,7 @@
       const data=await r.json(); if(!r.ok)throw new Error(data.error||'Não foi possível confirmar');
       const [y,m,d]=date.value.split('-'); const message='Olá, quero agendar na Barbearia Premium.\nTipo de corte: '+service.value+'.\nValor: R$ 40.\nData agendada: '+d+'/'+m+'/'+y+'.\nHorário agendado: '+selectedTime+'.';
       window.location.href='https://wa.me/5511949753727?text='+encodeURIComponent(message);
-    }catch(err){confirm.textContent='Agendar agora ↗';updateSummary()}
+    }catch(err){confirm.textContent='Agendar ↗';updateSummary()}
   });
   renderCalendar(); renderTimes();
 })();
