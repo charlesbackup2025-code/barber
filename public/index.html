@@ -87,7 +87,7 @@
       display: inline-flex; align-items: center; justify-content: center; gap: 10px;
       min-height: 50px; padding: 0 22px; border-radius: 3px;
       background: var(--white); color: var(--black); font-size: 13px; font-weight: 800;
-      letter-spacing: .08em; text-transform: uppercase; transition: transform .2s, background .2s;
+      letter-spacing: .08em; text-transform: uppercase; transition: transform .3s, background .3s;
     }
     .button:hover { transform: translateY(-2px); background: var(--gold-soft); }
     .button.whatsapp { background: transparent; color: var(--gold); }
@@ -106,7 +106,7 @@
     .section-head h2 { margin: 0; font-size: clamp(30px, 5vw, 54px); line-height: 1; letter-spacing: -.04em; white-space: nowrap; }
     .section-head p { margin: 0; color: var(--muted); max-width: 360px; font-size: 14px; }
     .services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    .card { background: var(--panel); border: 1px solid var(--line); padding: 0; min-height: 220px; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; transition: border-color .2s, transform .2s; }
+    .card { background: var(--panel); border: 1px solid var(--line); padding: 0; min-height: 220px; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; transition: border-color .3s, transform .3s; }
     .card:hover { border-color: var(--gold); transform: translateY(-3px); }
     .card-image { width: 100%; height: 190px; aspect-ratio: 16 / 9; display: block; object-fit: cover; filter: saturate(.82) contrast(1.08); }
     .card > div:not(.card-bottom) { padding: 14px 20px 0; }
@@ -218,7 +218,7 @@
     .booking-confirm { width: 100%; margin-top: 20px; }
     .booking-confirm[aria-disabled="true"] { opacity: .45; pointer-events: none; }
     .photo-trigger { display: block; padding: 0; border: 0; width: 100%; background: transparent; cursor: pointer; }
-    .photo-trigger .card-image { transition: transform .25s, filter .25s; }
+    .photo-trigger .card-image { transition: transform .3s, filter .3s; }
     .photo-trigger:hover .card-image { transform: scale(1.03); filter: saturate(1) contrast(1.08); }
     @media (max-width:760px) { .inline-booking { width: calc(100vw - 28px); max-width: 680px; padding: 24px 16px; } .available-times { grid-template-columns: repeat(3, 1fr); } }
   </style>
