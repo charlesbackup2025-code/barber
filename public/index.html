@@ -80,6 +80,8 @@
 
     @keyframes heroFade { 0%, 20% { opacity: 1; } 25%, 100% { opacity: 0; } }
     .eyebrow { color: var(--gold-soft); font-size: 12px; letter-spacing: .25em; text-transform: uppercase; font-weight: 700; }
+    .accent-word { color: var(--gold-soft); }
+    .white-word { color: #fff; }
     h1 { font-size: clamp(48px, 9vw, 104px); line-height: .92; letter-spacing: -.06em; margin: 20px 0 26px; max-width: 760px; }
     h1 em { color: var(--gold-soft); font-style: normal; }
     .hero p { color: #cfcfcf; font-size: 18px; max-width: 560px; margin: 0 0 34px; }
@@ -175,7 +177,7 @@
       .hero-copy > .eyebrow { font-size: 14px; }
       .inline-booking { width: 100%; max-width: none; padding: 36px; }
       .booking-fields select, .booking-fields input, .date-trigger { height: 54px; }
-      .brand { font-size: 20px; }
+      .brand { font-size: 24px; }
       .nav-link { min-height: 52px; font-size: 22px; }
       .hero-copy > .eyebrow { font-size: 20px; color: #fff; }
       .hero-booking { margin-top: 48px; }
@@ -183,7 +185,7 @@
       .hero-booking .step { gap: 16px; padding: 12px 0; }
       .hero-booking .step b { min-width: 34px; font-size: 24px; }
       .hero-booking .step span { font-size: 26px; line-height: 1.25; }
-      .hero-booking > .mini-button { padding: 16px 22px; font-size: 24px; }
+      .hero-booking > .mini-button { padding: 18px 26px; font-size: 28px; }
       .card > div:not(.card-bottom) { padding: 18px 24px 0; }
       .card h3 { margin: 14px 0 6px; font-size: 28px; }
       .card p { font-size: 20px; line-height: 1.35; }
@@ -242,7 +244,7 @@
     <div class="wrap hero">
       <div class="hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow">Cortes e barba de alto padrão</div>
+          <div class="eyebrow"><span class="accent-word">Cortes</span> e <span class="white-word">barba</span> de <span class="accent-word">alto</span> <span class="white-word">padrão</span></div>
           <div class="hero-booking">
             <div class="steps" aria-label="Como agendar">
               <div class="step"><b>1</b><span>Escolha o tipo de corte.</span></div>
