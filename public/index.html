@@ -163,6 +163,23 @@
     .booking-fields { display: grid; gap: 8px; }
     .booking-fields label { color: var(--gold-soft); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-top: 9px; }
     .booking-fields select, .booking-fields input { width: 100%; height: 48px; background: #080808; border: 1px solid #3a3a3a; color: var(--white); padding: 0 12px; font: inherit; }
+    .date-control { position: relative; }
+    .date-trigger { width: 100%; height: 48px; background: #080808; border: 1px solid #3a3a3a; color: var(--white); padding: 0 12px; font: inherit; text-align: left; cursor: pointer; }
+    .date-trigger:hover, .date-trigger:focus-visible { border-color: var(--gold); outline: none; }
+    .calendar-picker { position: absolute; left: 0; right: 0; top: 56px; z-index: 5; background: #101010; border: 1px solid var(--gold); padding: 14px; box-shadow: 0 14px 30px rgba(0,0,0,.45); }
+    .calendar-picker[hidden] { display: none; }
+    .calendar-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 12px; }
+    .calendar-head strong { color: var(--white); font-size: 14px; text-transform: capitalize; }
+    .calendar-nav { width: 32px; height: 32px; border: 1px solid #3a3a3a; background: #080808; color: var(--white); cursor: pointer; font-size: 20px; line-height: 1; }
+    .calendar-nav:hover:not(:disabled) { border-color: var(--gold); color: var(--gold-soft); }
+    .calendar-nav:disabled { opacity: .35; cursor: not-allowed; }
+    .calendar-weekdays, .calendar-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+    .calendar-weekdays { margin-bottom: 4px; }
+    .calendar-weekdays span { color: var(--muted); font-size: 10px; font-weight: 800; text-align: center; text-transform: uppercase; }
+    .calendar-day, .calendar-empty { min-height: 34px; }
+    .calendar-day { border: 1px solid #3a3a3a; background: #080808; color: var(--white); cursor: pointer; font: inherit; font-size: 12px; }
+    .calendar-day:hover:not(:disabled), .calendar-day.is-selected { background: var(--gold); border-color: var(--gold); color: #111; }
+    .calendar-day:disabled { opacity: .3; cursor: not-allowed; }
     .available-times { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
     .available-time { padding: 11px 4px; background: #080808; border: 1px solid #3a3a3a; color: var(--white); font-weight: 700; cursor: pointer; }
     .available-time:hover, .available-time.is-selected { background: var(--gold); border-color: var(--gold); color: #111; }
@@ -207,8 +224,16 @@
               <div class="booking-fields">
                 <label for="booking-service">Tipo de corte</label>
                 <select id="booking-service"><option>Social</option><option>Personalizado</option><option>Barba</option><option>Luzes</option><option>Degradê</option><option>Navalhado</option></select>
-                <label for="booking-date">Data</label>
-                <input id="booking-date" type="date">
+                <label for="date-trigger">Data</label>
+                <div class="date-control">
+                  <button id="date-trigger" class="date-trigger" type="button" aria-haspopup="dialog" aria-expanded="false">Escolha uma data</button>
+                  <input id="booking-date" type="date" hidden>
+                  <div class="calendar-picker" id="booking-calendar" role="dialog" aria-label="Escolha uma data" hidden>
+                    <div class="calendar-head"><button id="calendar-prev" class="calendar-nav" type="button" aria-label="Mês anterior">‹</button><strong id="calendar-label"></strong><button id="calendar-next" class="calendar-nav" type="button" aria-label="Próximo mês">›</button></div>
+                    <div class="calendar-weekdays" aria-hidden="true"><span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span></div>
+                    <div class="calendar-days" id="calendar-days"></div>
+                  </div>
+                </div>
                 <label>Horário disponível</label>
                 <div class="available-times" id="available-times"></div>
               </div>
@@ -287,16 +312,41 @@
   const panel=document.getElementById('agendamento');
   const service=document.getElementById('booking-service');
   const date=document.getElementById('booking-date');
+  const dateTrigger=document.getElementById('date-trigger');
+  const calendar=document.getElementById('booking-calendar');
+  const calendarLabel=document.getElementById('calendar-label');
+  const calendarDays=document.getElementById('calendar-days');
+  const calendarPrev=document.getElementById('calendar-prev');
+  const calendarNext=document.getElementById('calendar-next');
   const times=document.getElementById('available-times');
   const summary=document.getElementById('booking-summary');
   const confirm=document.getElementById('booking-confirm');
   let selectedTime=''; let availability=[];
-  const now=new Date(); now.setMinutes(now.getMinutes()-now.getTimezoneOffset());
-  date.min=now.toISOString().slice(0,10);
+  const today=new Date(); today.setHours(0,0,0,0);
+  const minDate=today.toISOString().slice(0,10);
+  let viewDate=new Date(today.getFullYear(),today.getMonth(),1);
+  date.min=minDate;
+  function iso(y,m,d){return y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0')}
+  function formatDate(value){const [y,m,d]=value.split('-');return d+'/'+m+'/'+y}
+  function renderCalendar(){
+    const y=viewDate.getFullYear(), m=viewDate.getMonth();
+    calendarLabel.textContent=viewDate.toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
+    calendarDays.innerHTML='';
+    const firstDay=new Date(y,m,1).getDay();
+    const totalDays=new Date(y,m+1,0).getDate();
+    for(let i=0;i<firstDay;i++)calendarDays.appendChild(document.createElement('span')).className='calendar-empty';
+    for(let d=1;d<=totalDays;d++){
+      const value=iso(y,m,d); const b=document.createElement('button');
+      b.type='button'; b.className='calendar-day'; b.textContent=d; b.dataset.date=value;
+      b.disabled=value<minDate; if(value===date.value)b.classList.add('is-selected');
+      b.addEventListener('click',function(){date.value=value;dateTrigger.textContent=formatDate(value);calendar.hidden=true;dateTrigger.setAttribute('aria-expanded','false');loadAvailability();renderCalendar()});
+      calendarDays.appendChild(b);
+    }
+    calendarPrev.disabled=(y===today.getFullYear()&&m===today.getMonth())||(viewDate<new Date(today.getFullYear(),today.getMonth(),1));
+  }
   function updateSummary(){
     if(date.value&&selectedTime){
-      const [y,m,d]=date.value.split('-'); const formatted=d+'/'+m+'/'+y;
-      summary.innerHTML='Serviço: <strong>'+service.value+'</strong> • Data: <strong>'+formatted+'</strong> • Horário: <strong>'+selectedTime+'</strong> • Valor: <strong>R$ 40</strong>';
+      summary.innerHTML='Serviço: <strong>'+service.value+'</strong> • Data: <strong>'+formatDate(date.value)+'</strong> • Horário: <strong>'+selectedTime+'</strong> • Valor: <strong>R$ 40</strong>';
       confirm.setAttribute('aria-disabled','false');
     }else{summary.textContent='Selecione a data e o horário.';confirm.setAttribute('aria-disabled','true')}
   }
@@ -316,10 +366,13 @@
     catch(e){summary.textContent='Não foi possível carregar os horários. Tente novamente.';}
   }
   function open(name){if(name)service.value=name;panel.hidden=false;panel.scrollIntoView({behavior:'smooth',block:'nearest'});if(date.value)loadAvailability();service.focus()}
-  function close(){panel.hidden=true}
+  function close(){panel.hidden=true;calendar.hidden=true;dateTrigger.setAttribute('aria-expanded','false')}
+  dateTrigger.addEventListener('click',function(){if(date.value){const [y,m]=date.value.split('-').map(Number);viewDate=new Date(y,m-1,1)}renderCalendar();calendar.hidden=!calendar.hidden;dateTrigger.setAttribute('aria-expanded',String(!calendar.hidden))});
+  calendarPrev.addEventListener('click',function(){if(!calendarPrev.disabled){viewDate=new Date(viewDate.getFullYear(),viewDate.getMonth()-1,1);renderCalendar()}});
+  calendarNext.addEventListener('click',function(){viewDate=new Date(viewDate.getFullYear(),viewDate.getMonth()+1,1);renderCalendar()});
   document.querySelectorAll('.booking-trigger').forEach(el=>el.addEventListener('click',function(e){if(el.tagName==='A')e.preventDefault();open(el.dataset.service)}));
   panel.querySelector('.close-booking').addEventListener('click',close);
-  service.addEventListener('change',updateSummary); date.addEventListener('change',loadAvailability);
+  service.addEventListener('change',updateSummary);
   confirm.addEventListener('click',async function(e){
     e.preventDefault(); if(!date.value||!selectedTime)return;
     confirm.textContent='Confirmando...'; confirm.setAttribute('aria-disabled','true');
@@ -330,7 +383,7 @@
       window.location.href='https://wa.me/5511949753727?text='+encodeURIComponent(message);
     }catch(err){summary.textContent=err.message||'Não foi possível confirmar o horário.';confirm.textContent='Agendar agora ↗';updateSummary()}
   });
-  renderTimes();
+  renderCalendar(); renderTimes();
 })();
 </script>
 </body>
