@@ -331,9 +331,11 @@
     const totalDays=new Date(y,m+1,0).getDate();
     for(let i=0;i<firstDay;i++)calendarDays.appendChild(document.createElement('span')).className='calendar-empty';
     for(let d=1;d<=totalDays;d++){
-      const value=iso(y,m,d); const b=document.createElement('button');
+      const value=iso(y,m,d);
+      if(value<minDate){const empty=document.createElement('span');empty.className='calendar-empty';calendarDays.appendChild(empty);continue;}
+      const b=document.createElement('button');
       b.type='button'; b.className='calendar-day'; b.textContent=d; b.dataset.date=value;
-      b.disabled=value<minDate; if(value===date.value)b.classList.add('is-selected');
+      if(value===date.value)b.classList.add('is-selected');
       b.addEventListener('click',function(){date.value=value;dateTrigger.textContent=formatDate(value);calendar.hidden=true;dateTrigger.setAttribute('aria-expanded','false');loadAvailability();renderCalendar()});
       calendarDays.appendChild(b);
     }
