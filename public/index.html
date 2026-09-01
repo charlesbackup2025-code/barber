@@ -131,7 +131,7 @@
     .location h2 { margin: 14px 0 18px; font-size: clamp(36px, 5vw, 62px); line-height: .95; letter-spacing: -.05em; }
     .location h2 em { color: var(--gold-soft); font-style: normal; }
     .location p { color: var(--muted); margin: 0 0 26px; line-height: 1.8; }
-    .location-image { width: 100%; max-width: 450px; height: auto; display: block; margin: 32px auto 0; border: 1px solid var(--line); background: #080808; }
+    .location-map { width: 100%; max-width: 720px; height: 360px; display: block; margin: 32px auto 0; border: 1px solid var(--line); background: #080808; }
     footer { padding: 34px 0 72px; color: var(--muted); font-size: 12px; }
     .footer-inner { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding-top: 22px; }
     @media (max-width: 760px) {
@@ -143,7 +143,7 @@
       .hero-copy { order: 1; }
       .services { grid-template-columns: repeat(2, 1fr); }
       .booking-box { grid-template-columns: 1fr; }
-      .location-image { margin-top: 22px; }
+      .location-map { height: 300px; margin-top: 22px; }
       .hero-booking .steps { grid-template-columns: 1fr; }
       .card-image { height: 100px; aspect-ratio: 16 / 9; }
       .card > div:not(.card-bottom) { padding: 18px 16px 0; }
@@ -298,7 +298,7 @@
           <div class="eyebrow">Onde estamos</div>
           <p>Estrada do Jacarandá, 2090<br>Altos da Santa Lucia<br>Carapicuíba — SP, 06361-400</p>
         </div>
-        <img class="location-image" src="/images/image-7.jpg" alt="Imagem completa da localização da barbearia na Estrada do Jacarandá, 2090">
+        <iframe class="location-map" title="Localização da Barbearia Premium no Google Maps" loading="lazy" allowfullscreen src="https://www.google.com/maps?q=Estrada+do+Jacarand%C3%A1%2C+2090%2C+Altos+da+Santa+Lucia%2C+Carapicu%C3%ADba%2C+SP%2C+06361-400&output=embed"></iframe>
       </div>
     </section>
   </main>
