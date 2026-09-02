@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="/favicon.png">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Barbearia Premium — Cortes e barba">
-  <meta property="og:description" content="Cortes e barba de alto padrão em Carapicuíba. Agende pelo WhatsApp.">
+  <meta property="og:description" content="Cortes e barba de alto padrão em Carapicuíba. Fale pelo WhatsApp.">
   <meta property="og:image" content="__ZAPIA_SITE_ORIGIN__/_z/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="__ZAPIA_SITE_ORIGIN__/_z/og.png">
@@ -69,6 +69,9 @@
     .brand { font-weight: 800; letter-spacing: .15em; text-transform: uppercase; font-size: 14px; }
     .brand span { color: var(--gold-soft); }
     .nav-link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; color: #fff; background: transparent; font-size: 16px; font-weight: 800; border: 0; border-radius: 3px; letter-spacing: .04em; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .nav-contact { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; color: #111; background: var(--gold-soft); font-size: 13px; font-weight: 800; border-radius: 3px; letter-spacing: .08em; text-transform: uppercase; }
+    .nav-contact:hover { background: var(--white); }
     .hero { position: relative; z-index: 1; max-width: none; padding: 104px 0 58px; }
     .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 300px); gap: 44px; align-items: start; }
     .hero-gallery { position: relative; width: 100%; aspect-ratio: 4 / 5; overflow: hidden; border: 1px solid rgba(241,90,36,.55); background: #0b0b0b; box-shadow: 14px 14px 0 rgba(241,90,36,.10); }
@@ -93,14 +96,23 @@
     .button.whatsapp { background: transparent; color: var(--gold); }
     .button.whatsapp:hover { background: transparent; color: var(--gold-soft); }
     .hero-note { color: var(--muted); font-size: 12px; margin-top: 16px; }
-    .hero-booking { margin-top: 14px; max-width: 680px; }
-    .hero-booking h2 { margin: 12px 0 10px; font-size: clamp(24px, 3.5vw, 36px); line-height: 1.05; letter-spacing: -.04em; white-space: nowrap; }
-    .hero-booking p { color: #cfcfcf; font-size: 21px; max-width: 620px; margin: 0 0 12px; }
-    .hero-booking .steps { margin-top: 14px; border-left: 1px solid var(--gold); padding-left: 24px; display: grid; grid-template-columns: 1fr; }
-    .hero-booking .step { display: flex; width: fit-content; max-width: 100%; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--line); }
-    .hero-booking .step b { color: var(--gold); font-size: 19px; min-width: 27px; }
-    .hero-booking .step span { color: #fff; font-size: 20px; }
-    .hero-booking > .mini-button { margin-top: 28px; background: transparent; color: var(--gold); box-shadow: none; border: 0; font-size: 15px; }
+    .hero-contact { margin-top: 14px; max-width: 680px; }
+    .hero-contact .steps { margin-top: 14px; border-left: 1px solid var(--gold); padding-left: 24px; display: grid; grid-template-columns: 1fr; }
+    .hero-contact .step { display: flex; width: fit-content; max-width: 100%; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+    .hero-contact .step b { color: var(--gold); font-size: 19px; min-width: 27px; }
+    .hero-contact .step span { color: #fff; font-size: 20px; }
+    .hero-contact > .mini-button { margin-top: 28px; font-size: 15px; }
+    .service-duration { color: var(--muted); font-size: 12px; margin-top: 2px; }
+    .whatsapp-float { position: fixed; right: 18px; bottom: 18px; z-index: 20; display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 18px; border-radius: 999px; background: var(--green); color: #071108; font-size: 12px; font-weight: 800; box-shadow: 0 8px 24px rgba(0,0,0,.35); transition: transform .25s, filter .25s; }
+    .whatsapp-float:hover { transform: translateY(-2px); filter: brightness(1.08); }
+    .hero-contact { margin-top: 14px; max-width: 680px; }
+    .hero-contact h2 { margin: 12px 0 10px; font-size: clamp(24px, 3.5vw, 36px); line-height: 1.05; letter-spacing: -.04em; white-space: nowrap; }
+    .hero-contact p { color: #cfcfcf; font-size: 21px; max-width: 620px; margin: 0 0 12px; }
+    .hero-contact .steps { margin-top: 14px; border-left: 1px solid var(--gold); padding-left: 24px; display: grid; grid-template-columns: 1fr; }
+    .hero-contact .step { display: flex; width: fit-content; max-width: 100%; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+    .hero-contact .step b { color: var(--gold); font-size: 19px; min-width: 27px; }
+    .hero-contact .step span { color: #fff; font-size: 20px; }
+    .hero-contact > .mini-button { margin-top: 28px; background: transparent; color: var(--gold); box-shadow: none; border: 0; font-size: 15px; }
     section { padding: 92px 0; }
     .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 34px; }
     .section-head h2 { margin: 0; font-size: clamp(30px, 5vw, 54px); line-height: 1; letter-spacing: -.04em; white-space: nowrap; }
@@ -144,17 +156,17 @@
       .hero-gallery { order: 2; width: 100%; max-width: 155px; margin: 0 0 0 auto; }
       .hero-copy { order: 1; }
       .hero-copy > .eyebrow { font-size: 10px; letter-spacing: .14em; color: var(--gold-soft); }
-      .hero-booking h2 { font-size: clamp(20px, 5.5vw, 26px); white-space: normal; }
+      .hero-contact h2 { font-size: clamp(20px, 5.5vw, 26px); white-space: normal; }
       .hero p { font-size: 12px; line-height: 1.25; margin-bottom: 6px; }
-      .hero-booking .steps { margin-top: 5px; padding-left: 8px; }
-      .hero-booking .step { gap: 5px; padding: 3px 0; }
-      .hero-booking .step b { min-width: 18px; font-size: 12px; }
-      .hero-booking .step span { font-size: 12px; line-height: 1.25; }
-      .hero-booking > .mini-button { margin-top: 14px; padding: 12px 16px; font-size: 15px; color: var(--gold); }
+      .hero-contact .steps { margin-top: 5px; padding-left: 8px; }
+      .hero-contact .step { gap: 5px; padding: 3px 0; }
+      .hero-contact .step b { min-width: 18px; font-size: 12px; }
+      .hero-contact .step span { font-size: 12px; line-height: 1.25; }
+      .hero-contact > .mini-button { margin-top: 14px; padding: 12px 16px; font-size: 15px; color: var(--gold); }
       .services { grid-template-columns: repeat(2, 1fr); }
       .booking-box { grid-template-columns: 1fr; }
       .location-map { height: 300px; margin: 14px auto 14px; }
-      .hero-booking .steps { grid-template-columns: 1fr; }
+      .hero-contact .steps { grid-template-columns: 1fr; }
       .card-image { height: 140px; aspect-ratio: 16 / 9; }
       .card > div:not(.card-bottom) { padding: 10px 12px 0; }
       .card h3 { margin: 6px 0 2px; font-size: 18px; }
@@ -169,69 +181,6 @@
       .footer-inner div + div { margin-top: 10px; }
     }
 
-    .inline-booking { margin-top: 20px; width: min(760px, 100%); background: #151515; border: 1px solid var(--gold); padding: 30px; }
-    .inline-booking[hidden] { display: none; }
-    @media (min-width: 761px) {
-      .hero-copy > .eyebrow { font-size: 14px; }
-      .inline-booking { width: 100%; max-width: none; padding: 36px; }
-      .booking-fields select, .booking-fields input, .date-trigger { height: 54px; }
-      nav { padding-top: 28px; }
-      .brand { font-size: 28px; letter-spacing: .07em; }
-      .nav-link { min-height: 56px; font-size: 28px; }
-      .hero { padding-top: 120px; }
-      .hero-copy > .eyebrow { font-size: 20px; color: var(--gold-soft); }
-      .hero-booking { margin-top: 8px; }
-      .hero-booking p { font-size: 27px; line-height: 1.3; }
-      .hero-booking .step { gap: 16px; padding: 12px 0; }
-      .hero-booking .step b { min-width: 34px; font-size: 24px; }
-      .hero-booking .step span { font-size: 26px; line-height: 1.25; }
-      .hero-booking > .mini-button { padding: 20px 28px; font-size: 30px; }
-      .card > div:not(.card-bottom) { padding: 18px 24px 0; }
-      .card h3 { margin: 14px 0 6px; font-size: 28px; }
-      .card p { font-size: 20px; line-height: 1.35; }
-      .card-bottom { margin-top: 14px; padding: 0 24px 20px; }
-      .price { font-size: 26px; }
-      .card-bottom .mini-button { padding: 14px 18px; font-size: 18px; }
-      .inline-booking { padding: 64px; font-size: 24px; }
-      .inline-subtitle { font-size: 22px; }
-      .booking-fields label { font-size: 18px; }
-      .booking-fields select, .booking-fields input, .date-trigger { height: 84px; font-size: 24px; }
-      .available-time { padding: 20px 8px; font-size: 24px; }
-    }
-    .inline-booking h2 { margin: 10px 0 8px; font-size: clamp(30px, 5vw, 48px); letter-spacing: -.05em; }
-    .inline-booking > .eyebrow { margin-bottom: 24px; }
-    .inline-booking .close-booking { float: right; border: 0; background: transparent; color: var(--white); font-size: 30px; cursor: pointer; line-height: 1; }
-    .inline-subtitle { color: var(--muted); margin: 0 0 20px; }
-    .booking-fields { display: grid; gap: 8px; }
-    .booking-fields label { color: var(--gold-soft); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-top: 9px; }
-    .booking-fields select, .booking-fields input { width: 100%; height: 48px; background: #080808; border: 1px solid #3a3a3a; color: var(--white); padding: 0 12px; font: inherit; }
-    .date-control { position: relative; }
-    .date-trigger { width: 100%; height: 48px; background: #080808; border: 1px solid #3a3a3a; color: var(--white); padding: 0 12px; font: inherit; text-align: left; cursor: pointer; }
-    .date-trigger:hover, .date-trigger:focus-visible { border-color: var(--gold); outline: none; }
-    .calendar-picker { position: absolute; left: 0; right: 0; top: 56px; z-index: 5; background: #101010; border: 1px solid var(--gold); padding: 14px; box-shadow: 0 14px 30px rgba(0,0,0,.45); }
-    .calendar-picker[hidden] { display: none; }
-    .calendar-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 12px; }
-    .calendar-head strong { color: var(--white); font-size: 14px; text-transform: capitalize; }
-    .calendar-nav { width: 32px; height: 32px; border: 1px solid #3a3a3a; background: #080808; color: var(--white); cursor: pointer; font-size: 20px; line-height: 1; }
-    .calendar-nav:hover:not(:disabled) { border-color: var(--gold); color: var(--gold-soft); }
-    .calendar-nav:disabled { opacity: .35; cursor: not-allowed; }
-    .calendar-weekdays, .calendar-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
-    .calendar-weekdays { margin-bottom: 4px; }
-    .calendar-weekdays span { color: var(--muted); font-size: 10px; font-weight: 800; text-align: center; text-transform: uppercase; }
-    .calendar-day, .calendar-empty { min-height: 34px; }
-    .calendar-day { border: 1px solid #3a3a3a; background: #080808; color: var(--white); cursor: pointer; font: inherit; font-size: 12px; }
-    .calendar-day:hover:not(:disabled), .calendar-day.is-selected { background: var(--gold); border-color: var(--gold); color: #111; }
-    .calendar-day:disabled { opacity: .3; cursor: not-allowed; }
-    .available-times { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
-    .available-time { padding: 11px 4px; background: #080808; border: 1px solid #3a3a3a; color: var(--white); font-weight: 700; cursor: pointer; }
-    .available-time:hover, .available-time.is-selected { background: var(--gold); border-color: var(--gold); color: #111; }
-    .available-time:disabled { opacity: .35; cursor: not-allowed; background: #1a1a1a; color: #777; }
-    .booking-confirm { width: 100%; margin-top: 20px; }
-    .booking-confirm[aria-disabled="true"] { opacity: .45; pointer-events: none; }
-    .photo-trigger { display: block; padding: 0; border: 0; width: 100%; background: transparent; cursor: pointer; }
-    .photo-trigger .card-image { transition: transform .3s, filter .3s; }
-    .photo-trigger:hover .card-image { transform: scale(1.03); filter: saturate(1) contrast(1.08); }
-    @media (max-width:760px) { .inline-booking { width: calc(100vw - 28px); max-width: 680px; padding: 24px 16px; } .inline-booking > .eyebrow { margin-bottom: 16px; } .available-times { grid-template-columns: repeat(3, 1fr); } }
   </style>
 </head>
 <body>
@@ -239,43 +188,23 @@
     <nav>
       <div class="wrap nav-inner">
         <a class="brand" href="#inicio">Barbearia <span>Premium</span></a>
-        <a class="nav-link" href="#cortes">Ver cortes ↓</a>
+        <div class="nav-actions">
+          <a class="nav-link" href="#cortes">Ver cortes ↓</a>
+          <a class="nav-contact" href="https://wa.me/5511949753727" target="_blank" rel="noopener">Contato ↗</a>
+        </div>
       </div>
     </nav>
     <div class="wrap hero">
       <div class="hero-grid">
         <div class="hero-copy">
           <div class="eyebrow">Cortes e barba de alto padrão</div>
-          <div class="hero-booking">
-            <div class="steps" aria-label="Como agendar">
-              <div class="step"><b>1</b><span>Escolha o tipo de corte.</span></div>
-              <div class="step"><b>2</b><span>Escolha a data e o horário disponíveis.</span></div>
-              <div class="step"><b>3</b><span>Clique em “Agendar” e envie a mensagem.</span></div>
-              <div class="step"><b>4</b><span>Aguarde a confirmação do barbeiro.</span></div>
+          <div class="hero-contact">
+            <div class="steps" aria-label="Como entrar em contato">
+              <div class="step"><b>1</b><span>Escolha o estilo que combina com você.</span></div>
+              <div class="step"><b>2</b><span>Fale com a equipe pelo WhatsApp.</span></div>
+              <div class="step"><b>3</b><span>Combine o melhor dia e horário.</span></div>
             </div>
-            <button class="mini-button booking-trigger" type="button" data-service="" aria-controls="agendamento" aria-expanded="false">Agendar ↗</button>
-            <div class="inline-booking" id="agendamento" hidden>
-              <button class="close-booking" type="button" aria-label="Fechar calendário">×</button>
-              <div class="eyebrow">Reserva rápida</div>
-              <p class="inline-subtitle">Escolha o serviço, o dia e um horário disponível.</p>
-              <div class="booking-fields">
-                <label for="booking-service">Tipo de corte</label>
-                <select id="booking-service"><option>Social</option><option>Personalizado</option><option>Barba</option><option>Luzes</option><option>Degradê</option><option>Navalhado</option></select>
-                <label for="date-trigger">Data</label>
-                <div class="date-control">
-                  <button id="date-trigger" class="date-trigger" type="button" aria-haspopup="dialog" aria-expanded="false">Escolha uma data</button>
-                  <input id="booking-date" type="date" hidden>
-                  <div class="calendar-picker" id="booking-calendar" role="dialog" aria-label="Escolha uma data" hidden>
-                    <div class="calendar-head"><button id="calendar-prev" class="calendar-nav" type="button" aria-label="Mês anterior">‹</button><strong id="calendar-label"></strong><button id="calendar-next" class="calendar-nav" type="button" aria-label="Próximo mês">›</button></div>
-                    <div class="calendar-weekdays" aria-hidden="true"><span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span></div>
-                    <div class="calendar-days" id="calendar-days"></div>
-                  </div>
-                </div>
-                <label>Horário disponível</label>
-                <div class="available-times" id="available-times" aria-live="polite"></div>
-              </div>
-              <a class="button whatsapp booking-confirm" id="booking-confirm" href="#" aria-disabled="true">Agendar ↗</a>
-            </div>
+            <a class="mini-button whatsapp" href="https://wa.me/5511949753727" target="_blank" rel="noopener" aria-label="Entrar em contato pelo WhatsApp">Contato ↗</a>
           </div>
         </div>
         <div class="hero-gallery" aria-label="Galeria de cortes da Barbearia Premium">
@@ -296,34 +225,34 @@
         </div>
         <div class="services">
           <article class="card">
-            <button class="photo-trigger booking-trigger" type="button" data-service="Social"><img loading="lazy" decoding="async" class="card-image" src="/images/image-4.jpg" alt="Barbeiro finalizando um corte masculino"></button>
-            <div><h3>Social</h3><p>Acabamento limpo e atemporal para qualquer ocasião.</p></div>
-            <div class="card-bottom"><div class="price">R$ 40</div><a class="mini-button booking-trigger" href="#agendamento" data-service="Social">Agendar ↗</a></div>
+            <div class="photo-trigger"><img loading="lazy" decoding="async" class="card-image" src="/images/image-4.jpg" alt="Barbeiro finalizando um corte masculino"></div>
+            <div><h3>Social</h3><div class="service-duration">⏱ 45 min</div><p>Acabamento limpo e atemporal para qualquer ocasião.</p></div>
+            <div class="card-bottom"><div class="price">R$ 55</div><a class="mini-button" href="https://wa.me/5511949753727" target="_blank" rel="noopener" aria-label="Entrar em contato sobre o serviço: Social">Contato ↗</a></div>
           </article>
           <article class="card">
-            <button class="photo-trigger booking-trigger" type="button" data-service="Personalizado"><img loading="lazy" decoding="async" class="card-image" src="/images/image-2.jpg" alt="Detalhe de corte masculino com tesoura e pente"></button>
-            <div><h3>Personalizado</h3><p>Um corte pensado para seu rosto, rotina e estilo.</p></div>
-            <div class="card-bottom"><div class="price">R$ 40</div><a class="mini-button booking-trigger" href="#agendamento" data-service="Personalizado">Agendar ↗</a></div>
+            <div class="photo-trigger"><img loading="lazy" decoding="async" class="card-image" src="/images/image-2.jpg" alt="Detalhe de corte masculino com tesoura e pente"></div>
+            <div><h3>Personalizado</h3><div class="service-duration">⏱ 45 min</div><p>Um corte pensado para seu rosto, rotina e estilo.</p></div>
+            <div class="card-bottom"><div class="price">R$ 55</div><a class="mini-button" href="https://wa.me/5511949753727" target="_blank" rel="noopener" aria-label="Entrar em contato sobre o serviço: Personalizado">Contato ↗</a></div>
           </article>
           <article class="card">
-            <button class="photo-trigger booking-trigger" type="button" data-service="Barba"><img loading="lazy" decoding="async" class="card-image" src="/images/image-5.jpg" alt="Corte masculino em destaque no Instagram da barbearia"></button>
-            <div><h3>Barba</h3><p>Modelagem, contorno e acabamento para valorizar seu rosto.</p></div>
-            <div class="card-bottom"><div class="price">R$ 40</div><a class="mini-button booking-trigger" href="#agendamento" data-service="Barba">Agendar ↗</a></div>
+            <div class="photo-trigger"><img loading="lazy" decoding="async" class="card-image" src="/images/image-5.jpg" alt="Corte masculino em destaque no Instagram da barbearia"></div>
+            <div><h3>Barba</h3><div class="service-duration">⏱ 45 min</div><p>Modelagem, contorno e acabamento para valorizar seu rosto.</p></div>
+            <div class="card-bottom"><div class="price">R$ 55</div><a class="mini-button" href="https://wa.me/5511949753727" target="_blank" rel="noopener" aria-label="Entrar em contato sobre o serviço: Barba">Contato ↗</a></div>
           </article>
           <article class="card">
-            <button class="photo-trigger booking-trigger" type="button" data-service="Luzes"><img loading="lazy" decoding="async" class="card-image" src="/images/image-1.jpg" alt="Barbeiro trabalhando em um corte masculino moderno"></button>
-            <div><h3>Luzes</h3><p>Iluminação sutil ou marcante para renovar o visual.</p></div>
-            <div class="card-bottom"><div class="price">R$ 40</div><a class="mini-button booking-trigger" href="#agendamento" data-service="Luzes">Agendar ↗</a></div>
+            <div class="photo-trigger"><img loading="lazy" decoding="async" class="card-image" src="/images/image-1.jpg" alt="Barbeiro trabalhando em um corte masculino moderno"></div>
+            <div><h3>Luzes</h3><div class="service-duration">⏱ 45 min</div><p>Iluminação sutil ou marcante para renovar o visual.</p></div>
+            <div class="card-bottom"><div class="price">R$ 55</div><a class="mini-button" href="https://wa.me/5511949753727" target="_blank" rel="noopener" aria-label="Entrar em contato sobre o serviço: Luzes">Contato ↗</a></div>
           </article>
           <article class="card">
-            <button class="photo-trigger booking-trigger" type="button" data-service="Degradê"><img loading="lazy" decoding="async" class="card-image" src="/images/image-3.jpg" alt="Barbeiro concentrado em um corte masculino"></button>
-            <div><h3>Degradê</h3><p>Transição suave, laterais bem marcadas e acabamento atual.</p></div>
-            <div class="card-bottom"><div class="price">R$ 40</div><a class="mini-button booking-trigger" href="#agendamento" data-service="Degradê">Agendar ↗</a></div>
+            <div class="photo-trigger"><img loading="lazy" decoding="async" class="card-image" src="/images/image-3.jpg" alt="Barbeiro concentrado em um corte masculino"></div>
+            <div><h3>Degradê</h3><div class="service-duration">⏱ 45 min</div><p>Transição suave, laterais bem marcadas e acabamento atual.</p></div>
+            <div class="card-bottom"><div class="price">R$ 55</div><a class="mini-button" href="https://wa.me/5511949753727" target="_blank" rel="noopener" aria-label="Entrar em contato sobre o serviço: Degradê">Contato ↗</a></div>
           </article>
           <article class="card">
-            <button class="photo-trigger booking-trigger" type="button" data-service="Navalhado"><img loading="lazy" decoding="async" class="card-image" src="/images/image-6.jpg" alt="Corte masculino com acabamento lateral no Instagram da barbearia"></button>
-            <div><h3>Navalhado</h3><p>Risco e definição para quem gosta de presença e atitude.</p></div>
-            <div class="card-bottom"><div class="price">R$ 40</div><a class="mini-button booking-trigger" href="#agendamento" data-service="Navalhado">Agendar ↗</a></div>
+            <div class="photo-trigger"><img loading="lazy" decoding="async" class="card-image" src="/images/image-6.jpg" alt="Corte masculino com acabamento lateral no Instagram da barbearia"></div>
+            <div><h3>Navalhado</h3><div class="service-duration">⏱ 45 min</div><p>Risco e definição para quem gosta de presença e atitude.</p></div>
+            <div class="card-bottom"><div class="price">R$ 55</div><a class="mini-button" href="https://wa.me/5511949753727" target="_blank" rel="noopener" aria-label="Entrar em contato sobre o serviço: Navalhado">Contato ↗</a></div>
           </article>
         </div>
       </div>
@@ -334,86 +263,12 @@
         <div class="eyebrow">Onde estamos</div>
         <iframe class="location-map" title="Localização da Barbearia Premium no Google Maps" loading="lazy" allowfullscreen src="https://www.google.com/maps?q=Estrada+do+Jacarand%C3%A1%2C+2090%2C+Altos+da+Santa+Lucia%2C+Carapicu%C3%ADba%2C+SP%2C+06361-400&output=embed"></iframe>
         <p>Estrada do Jacarandá, 2090<br>Altos da Santa Lúcia<br>Carapicuíba — SP, 06361-400</p>
+        <a class="mini-button" href="https://www.google.com/maps?q=Estrada+do+Jacarand%C3%A1%2C+2090%2C+Altos+da+Santa+Lucia%2C+Carapicu%C3%ADba%2C+SP%2C+06361-400" target="_blank" rel="noopener">Como chegar ↗</a>
       </div>
     </section>
   </main>
 
-<script>
-(function(){
-  const panel=document.getElementById('agendamento');
-  const service=document.getElementById('booking-service');
-  const date=document.getElementById('booking-date');
-  const dateTrigger=document.getElementById('date-trigger');
-  const calendar=document.getElementById('booking-calendar');
-  const calendarLabel=document.getElementById('calendar-label');
-  const calendarDays=document.getElementById('calendar-days');
-  const calendarPrev=document.getElementById('calendar-prev');
-  const calendarNext=document.getElementById('calendar-next');
-  const times=document.getElementById('available-times');
-  const confirm=document.getElementById('booking-confirm');
-  let selectedTime=''; let availability=[];
-  const today=new Date(); today.setHours(0,0,0,0);
-  const minDate=today.toISOString().slice(0,10);
-  let viewDate=new Date(today.getFullYear(),today.getMonth(),1);
-  date.min=minDate;
-  function iso(y,m,d){return y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0')}
-  function formatDate(value){const [y,m,d]=value.split('-');return d+'/'+m+'/'+y}
-  function renderCalendar(){
-    const y=viewDate.getFullYear(), m=viewDate.getMonth();
-    calendarLabel.textContent=viewDate.toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
-    calendarDays.innerHTML='';
-    const firstDay=new Date(y,m,1).getDay();
-    const totalDays=new Date(y,m+1,0).getDate();
-    for(let i=0;i<firstDay;i++)calendarDays.appendChild(document.createElement('span')).className='calendar-empty';
-    for(let d=1;d<=totalDays;d++){
-      const value=iso(y,m,d);
-      if(value<minDate){const empty=document.createElement('span');empty.className='calendar-empty';calendarDays.appendChild(empty);continue;}
-      const b=document.createElement('button');
-      b.type='button'; b.className='calendar-day'; b.textContent=d; b.dataset.date=value;
-      if(value===date.value)b.classList.add('is-selected');
-      b.addEventListener('click',function(){date.value=value;dateTrigger.textContent=formatDate(value);calendar.hidden=true;dateTrigger.setAttribute('aria-expanded','false');loadAvailability();renderCalendar()});
-      calendarDays.appendChild(b);
-    }
-    calendarPrev.disabled=(y===today.getFullYear()&&m===today.getMonth())||(viewDate<new Date(today.getFullYear(),today.getMonth(),1));
-  }
-  function updateSummary(){
-    confirm.setAttribute('aria-disabled',String(!(date.value&&selectedTime)));
-  }
-  function renderTimes(){
-    times.innerHTML=''; selectedTime='';
-    const list=availability.length?availability:Array.from({length:13},(_,i)=>({time:String(i+8).padStart(2,'0')+':00',available:false}));
-    list.forEach(slot=>{
-      const b=document.createElement('button'); b.type='button'; b.className='available-time'; b.textContent=slot.time; b.disabled=!slot.available;
-      if(slot.available)b.addEventListener('click',function(){document.querySelectorAll('.available-time').forEach(x=>x.classList.remove('is-selected'));b.classList.add('is-selected');selectedTime=b.textContent;updateSummary()});
-      times.appendChild(b);
-    }); updateSummary();
-  }
-  async function loadAvailability(){
-    availability=[]; renderTimes(); if(!date.value)return;
-    try{const r=await fetch('/api/availability?date='+encodeURIComponent(date.value),{cache:'no-store'});const data=await r.json();if(!r.ok)throw new Error();availability=data.slots||[];renderTimes();}
-    catch(e){renderTimes();}
-  }
-  const triggers=Array.from(document.querySelectorAll('.booking-trigger'));
-  function open(name){if(name)service.value=name;panel.hidden=false;triggers.forEach(t=>t.setAttribute('aria-expanded','true'));panel.scrollIntoView({behavior:'smooth',block:'nearest'});if(date.value)loadAvailability();service.focus()}
-  function close(){panel.hidden=true;calendar.hidden=true;dateTrigger.setAttribute('aria-expanded','false');triggers.forEach(t=>t.setAttribute('aria-expanded','false'))}
-  dateTrigger.addEventListener('click',function(){if(date.value){const [y,m]=date.value.split('-').map(Number);viewDate=new Date(y,m-1,1)}renderCalendar();calendar.hidden=!calendar.hidden;dateTrigger.setAttribute('aria-expanded',String(!calendar.hidden))});
-  calendarPrev.addEventListener('click',function(){if(!calendarPrev.disabled){viewDate=new Date(viewDate.getFullYear(),viewDate.getMonth()-1,1);renderCalendar()}});
-  calendarNext.addEventListener('click',function(){viewDate=new Date(viewDate.getFullYear(),viewDate.getMonth()+1,1);renderCalendar()});
-  document.querySelectorAll('.booking-trigger').forEach(el=>el.addEventListener('click',function(e){if(el.tagName==='A')e.preventDefault();open(el.dataset.service)}));
-  panel.querySelector('.close-booking').addEventListener('click',close);
-  service.addEventListener('change',updateSummary);
-  confirm.addEventListener('click',async function(e){
-    e.preventDefault(); if(!date.value||!selectedTime)return;
-    confirm.textContent='Confirmando...'; confirm.setAttribute('aria-disabled','true');
-    try{
-      const r=await fetch('/api/book',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({service:service.value,date:date.value,time:selectedTime})});
-      const data=await r.json(); if(!r.ok)throw new Error(data.error||'Não foi possível confirmar');
-      const [y,m,d]=date.value.split('-'); const message='Olá, quero agendar na Barbearia Premium.\nTipo de corte: '+service.value+'.\nValor: R$ 40.\nData agendada: '+d+'/'+m+'/'+y+'.\nHorário agendado: '+selectedTime+'.';
-      window.location.href='https://wa.me/5511949753727?text='+encodeURIComponent(message);
-    }catch(err){confirm.textContent='Agendar ↗';updateSummary()}
-  });
-  renderCalendar(); renderTimes();
-})();
-</script>
+
+  <a class="whatsapp-float" href="https://wa.me/5511949753727" target="_blank" rel="noopener" aria-label="Falar com a Barbearia Premium pelo WhatsApp">WhatsApp</a>
 </body>
 </html>
